@@ -5,27 +5,31 @@ interface NewsCardProps {
     article: Article;
 }
 
-
 function NewsCard({ article }: NewsCardProps) {
-    // PART 2: Create a reusable news card to use with general stories
-
-    // Similar to Part 1, create a component that displays:
-    // 1. The article's image
-    // 2. The article's title,
-    // 3. A truncated version of the article's body
-
-    // This component should be reusable to populate all stories on the news page.
-
-    // Once completing this part, you should be able to see a few test articles on
-    // the right side of the screen.
-
-    // Hint: Some classes in `globals.css` could help with styling
-
     return (
         <div className="news-card">
-            <div className="news-info">
-                {/* TODO: Remove the span below and implement a reusable NewsCard */}
-                <span className='instruction'>Part 2: Build Reusable News Card</span>
+            {article.image_url && (
+                <div className="news-image">
+                    <img 
+                        src={article.image_url} 
+                        alt={article.title} 
+                        className="w-full h-48 object-cover rounded-t"
+                    />
+                </div>
+            )}
+            <div className="news-info p-4">
+                <h3 className="news-title font-bold text-lg mb-2">{article.title}</h3>
+                <p className="news-excerpt line-clamp-3 text-gray-700">
+                    {article.body}
+                </p>
+                <div className="flex justify-between items-center mt-3">
+                    <span className="text-sm text-gray-500">
+                        By {article.author} • {new Date(article.publish_date).toLocaleDateString()}
+                    </span>
+                    <Link href={article.url} className="read-more text-blue-600 hover:underline">
+                        Read more
+                    </Link>
+                </div>
             </div>
         </div>
     );
