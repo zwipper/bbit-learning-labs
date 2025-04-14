@@ -5,7 +5,6 @@ from datetime import datetime
 
 from app.utils.redis import REDIS_CLIENT
 
-#hihihihih
 @dataclass
 class Article:
     """Dataclass for an article."""
